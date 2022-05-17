@@ -24,11 +24,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 
-Issuer.discover('https://nodejs-sample.criipto.id')
+Issuer.discover('http://localhost:8080/realms/tchap-identite/.well-known/openid-configuration')
   .then(criiptoIssuer => {
     var client = new criiptoIssuer.Client({
-      client_id: 'urn:criipto:nodejs:demo:1010',
-      client_secret: 'j9wYVyD3zXZPMo3LTq/xSU/sMu9/shiFKpTHKfqAutM=',
+      client_id: 'tchap-identite-client',
+      client_secret: 'Jsheryrc78sdjdb09',
       redirect_uris: [ 'http://localhost:3000/auth/callback' ],
       post_logout_redirect_uris: [ 'http://localhost:3000/logout/callback' ],
       token_endpoint_auth_method: 'client_secret_post'
@@ -62,7 +62,7 @@ Issuer.discover('https://nodejs-sample.criipto.id')
 
     // start authentication request
     app.get('/auth', (req, res, next) => {
-      passport.authenticate('oidc', { acr_values: 'urn:grn:authn:no:bankid' })(req, res, next);
+      passport.authenticate('oidc', { login_hint:"olivier.delcroix@beta.gouv.fr" })(req, res, next);
     });
 
     // authentication callback
