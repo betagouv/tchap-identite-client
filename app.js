@@ -28,7 +28,7 @@ Issuer.discover('http://localhost:8080/realms/tchap-identite/.well-known/openid-
   .then(criiptoIssuer => {
     var client = new criiptoIssuer.Client({
       client_id: 'tchap-identite-client',
-      client_secret: 'Jsheryrc78sdjdb09',
+      client_secret: 'xxxx',
       redirect_uris: [ 'http://localhost:3000/auth/callback' ],
       post_logout_redirect_uris: [ 'http://localhost:3000/logout/callback' ],
       token_endpoint_auth_method: 'client_secret_post'
